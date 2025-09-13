@@ -1,0 +1,25 @@
+﻿
+nav {
+    --nav-height: 70px;
+    height: var(--nav-height);
+    padding: 0 20px;
+}
+
+nav > div {
+    display: flex;
+}
+
+::deep a {
+    height: var(--nav-height);
+    line-height: var(--nav-height);
+    font-size: 22px;
+    padding: 0 20px;
+    text-decoration: none;
+    display: block;
+}
+
+::deep a:hover {
+    transition: .3s ease all;
+    background-color: rgba(0,0,0,0.2);
+    cursor: pointer;
+}

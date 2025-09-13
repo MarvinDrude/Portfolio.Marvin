@@ -1,0 +1,27 @@
+
+.notfound {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.main {
+    min-height: calc(90% - 70px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 50px;
+}
+
+.desc {
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--color-secondary);
+    padding-top: 20px;
+}
+
