@@ -1,9 +1,13 @@
 using Portfolio.Marvin.Components;
+using Portfolio.Marvin.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services
+    .AddPortfolioServices(builder.Configuration);
 
 var app = builder.Build();
 

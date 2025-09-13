@@ -17,5 +17,6 @@ public enum TechnologyKind
    Teams = 13,
    SqlServer = 14,
    TypeScript = 15,
-   React = 16
+   React = 16,
+   Blazor = 17
 }

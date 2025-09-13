@@ -1,0 +1,37 @@
+﻿@using Portfolio.Marvin.Enums
+@using Portfolio.Marvin.Models.Technologies
+@using Portfolio.Marvin.Providers.Interfaces
+
+@inject ITechnologyProvider Provider
+
+@if (_technology is not null)
+{
+   <div class="technology">
+      <div class="icon">
+         <div class="image" style="background-image: url('technologies/@(_technology.Logo.FileName).svg');"></div>
+      </div>
+      <div class="text">
+         @_technology.Name
+      </div>
+   </div>
+}
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required TechnologyKind Kind { get; set; }
+
+   private Technology? _technology;
+
+   public override Task SetParametersAsync(ParameterView parameters)
+   {
+      var value = parameters.GetValueOrDefault<TechnologyKind>(nameof(Kind));
+      if (value != Kind)
+      {
+         _technology = Provider.GetTechnology(value);
+      }
+      
+      return base.SetParametersAsync(parameters);
+   }
+
+}

@@ -1,0 +1,15 @@
+﻿@using Portfolio.Marvin.Enums
+
+<div class="list">
+   @foreach (var kind in Kinds)
+   {
+      <TechnologyLink Kind="@kind" />
+   }
+</div>
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required List<TechnologyKind> Kinds { get; set; }
+   
+}

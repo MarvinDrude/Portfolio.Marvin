@@ -1,0 +1,19 @@
+﻿
+.technology {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.technology .icon .image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+}
+
+.technology .text {
+    font-size: 17px;
+    font-weight: 400;
+}

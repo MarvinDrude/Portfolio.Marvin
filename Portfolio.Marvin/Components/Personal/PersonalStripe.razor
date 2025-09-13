@@ -1,4 +1,6 @@
-﻿
+﻿@using Portfolio.Marvin.Components.Common
+@using Portfolio.Marvin.Enums
+
 <div class="personal">
    <div class="me-image"></div>
    <h3 class="name">Marvin Drude</h3>
@@ -23,8 +25,18 @@
          <a href="https://www.instagram.com/marvindrudee" class="simple-link" target="_blank" style="font-size: 19px">@@marvindrudee</a>
       </PersonalLink>
    </div>
+   
+   <div class="technologies">Technologies I love and currently use</div>
+   <TechnologyList Kinds="@_technologies" />
 </div>
 
 @code {
-   
+
+   private readonly List<TechnologyKind> _technologies = [
+      TechnologyKind.CSharp, TechnologyKind.Net, 
+      TechnologyKind.Blazor, TechnologyKind.PostgreSql,
+      TechnologyKind.Html5, TechnologyKind.Css,
+      TechnologyKind.JavaScript
+   ];
+
 }
