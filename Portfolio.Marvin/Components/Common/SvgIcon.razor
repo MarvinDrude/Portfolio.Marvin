@@ -1,0 +1,33 @@
+﻿
+<div class="icon" style="
+      --height: var(--svg-height, @(DefaultHeight)px);
+      --width: var(--svg-width, @(DefaultWidth)px);
+      --color: var(--svg-color, @(DefaultColor));
+   ">
+   <div
+      class="image" 
+      style="
+         mask: url('svgs/@(Name).svg') no-repeat center;
+      ">
+   </div>
+</div>
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required string Name { get; set; }
+   
+   [Parameter]
+   public int Width { get; set; }
+   
+   [Parameter]
+   public int Height { get; set; }
+   
+   [Parameter]
+   public string? Color { get; set; }
+
+   private string DefaultColor => Color ?? "#fff";
+   
+   private int DefaultWidth => Width > 0 ? Width : 32;
+   private int DefaultHeight => Height > 0 ? Height : 32;
+}

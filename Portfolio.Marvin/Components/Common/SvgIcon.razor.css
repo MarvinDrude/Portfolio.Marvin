@@ -1,0 +1,7 @@
+﻿
+.image {
+    mask-size: contain;
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--color);
+}

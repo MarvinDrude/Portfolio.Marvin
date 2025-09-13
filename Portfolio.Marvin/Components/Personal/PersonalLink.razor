@@ -1,0 +1,18 @@
+﻿@using Portfolio.Marvin.Components.Common
+
+<div class="link">
+   <SvgIcon Name="@SvgName" />
+   <div>
+      @ChildContent
+   </div>
+</div>
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required string SvgName { get; set; }
+   
+   [Parameter, EditorRequired]
+   public required RenderFragment ChildContent { get; set; }
+   
+}
