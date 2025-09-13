@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Roboto;
+    src: url("fonts/RobotoMono-VariableFont_wght.ttf");
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf");
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: italic;
+}
+
+:root {
+    color-scheme: dark;
+    --page-max-width: 2200px;
+
+    --main-background: light-dark(#F1F5F9, #0D1821);
+    --color-primary: ligh-dark(#FFFFFF, #000000);
+}
+
+* {
+    box-sizing: border-box;
+    color: var(--color-primary);
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;    
+    font-family: Roboto, serif;
+}
+
+body {
+    background-color: var(--main-background);
+}
+
+.page {
+    display: grid;
+    width: var(--page-max-width);
+    grid-template-columns: 1fr minmax(0px, 300px);
+}
