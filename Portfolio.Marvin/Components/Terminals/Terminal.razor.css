@@ -1,0 +1,84 @@
+
+.terminal {
+    border-radius: 10px;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.6),
+        inset 0 0 8px rgba(255, 255, 255, 0.03);
+    --height: 550px;
+    --bar-height: 50px;
+    height: var(--height);
+    background-color: #191e23;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--bar-height);
+}
+
+.bar .right {
+    display: flex;
+    align-items: center;
+    --svg-width: 22px;
+    --svg-height: 22px;
+    --svg-color: var(--color-secondary);
+}
+
+.bar .right .btn {
+    padding: 0 12px;
+}
+
+.body {
+    margin: 0 auto;
+    width: calc(100% - 4px);
+    height: calc(var(--height) - var(--bar-height) - 2px);
+    background-color: #14181c;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow-y: auto;
+    color: #bab6a8;
+    padding: 20px;
+}
+
+.bar .left {
+    display: flex;
+    align-items: end;
+    padding: 0 0 0 20px;
+    height: var(--bar-height);
+}
+
+.bar .left .tab {
+    background-color: #14181c;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: block;
+    height: calc(var(--bar-height) - 10px);
+    padding: 0 30px;
+    line-height: calc(var(--bar-height) - 10px);
+    user-select: none;
+}
+
+.input {
+    padding-top: 10px;
+    display: flex;
+    align-items: start;
+    padding-bottom: 20px;
+}
+
+.input span {
+    display: block;
+    width: 30px;
+    font-size: 18px;
+}
+
+.input input {
+    resize: none;
+    background: transparent;
+    border: none;
+    appearance: none;
+    outline: none;
+    overflow: hidden;
+    flex: 1;
+    font-size: 18px;
+}
