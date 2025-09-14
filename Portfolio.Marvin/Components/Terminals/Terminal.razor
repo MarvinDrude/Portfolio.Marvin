@@ -37,6 +37,7 @@
             @bind:event="oninput"
             @onkeydown="@(EventCallback.Factory.Create<KeyboardEventArgs>(this, OnKeyDown))" 
             type="text"
+            maxlength="2000"
             id="console-input" rows="1"
             autocomplete="off" 
             autocorrect="off" 
@@ -106,6 +107,8 @@
       if (args.Key != "Enter" || !_initialized) return;
 
       var before = _input ?? string.Empty;
+      if (before.Length > 3000) return;
+      
       before = WebUtility.HtmlEncode(before);
       
       _lines.Add(before);

@@ -7,9 +7,14 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services
+    .AddResponseCompression();
+
+builder.Services
     .AddPortfolioServices(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseResponseCompression();
 
 if (!app.Environment.IsDevelopment())
 {
