@@ -46,3 +46,7 @@ body {
 .simple-link:hover {
     text-decoration: underline;
 }
+
+.hide {
+    display: none !important;
+}

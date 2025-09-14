@@ -36,6 +36,7 @@
     background-color: #14181c;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    overflow-x: hidden;
     overflow-y: auto;
     color: #bab6a8;
     padding: 20px;
@@ -81,4 +82,15 @@
     overflow: hidden;
     flex: 1;
     font-size: 18px;
+}
+
+.body pre {
+    word-wrap: break-word;
+    overflow: hidden;
+    hite-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.history {
+    overflow: hidden;
 }

@@ -1,8 +1,11 @@
-﻿@using Portfolio.Marvin.Components.Common
+﻿@using Me.Memory.Buffers
+@using Portfolio.Marvin.Components.Common
+
+@implements IDisposable
 
 @inject IJSRuntime JsRuntime
 
-<div class="terminal" @onclick="@OnClickInsideTerminal">
+<div class="terminal" @onclick="@EventCallback.Factory.Create(this, OnClickInsideTerminal)">
    <div class="bar">
       <div class="left">
          <div class="tab">
@@ -24,11 +27,12 @@
       </div>
       <div class="input">
          <span>&gt; </span>
+         <label class="hide" for="console-input">Input</label>
          <input 
             @ref="@_textAreaRef" 
             @bind="@_input" 
             @bind:event="oninput"
-            @onkeydown="@OnKeyDown" 
+            @onkeydown="@(EventCallback.Factory.Create<KeyboardEventArgs>(this, OnKeyDown))" 
             type="text"
             id="console-input" rows="1"
             autocomplete="off" 
@@ -44,8 +48,8 @@
    private ElementReference _textAreaRef;
    private ElementReference _bodyRef;
    
-   private List<string> _lines = [];
-   private int _maxLines = 300;
+   private CircularBuffer<string> _lines = new(_maxLines);
+   private const int _maxLines = 100;
 
    private string? _input;
 
@@ -73,21 +77,27 @@
 
    private void Reset()
    {
-      _lines = [];
-      _lines.AddRange(
-         "Welcome to PortfolioOS v1.0",
-         " ",
-         @" __  __                  _       ",
-         @"|  \/  | __ _ _ ____   _(_)_ __  ",
-         @"| |\/| |/ _` | '__\ \ / / | '_ \ ",
-         @"| |  | | (_| | |   \ V /| | | | |",
-         @"|_|  |_|\__,_|_|    \_/ |_|_| |_|",
-         " ",
-         "Type 'help' to see available commands.");
+      _lines.Dispose();
+      _lines = new CircularBuffer<string>(_maxLines);
+      
+      _lines.Add("Welcome to PortfolioOS v1.0");
+      _lines.Add(" ");
+      _lines.Add(@" __  __                  _       ");
+      _lines.Add(@"|  \/  | __ _ _ ____   _(_)_ __  ");
+      _lines.Add(@"| |\/| |/ _` | '__\ \ / / | '_ \ ");
+      _lines.Add(@"| |  | | (_| | |   \ V /| | | | |");
+      _lines.Add(@"|_|  |_|\__,_|_|    \_/ |_|_| |_|");
+      _lines.Add(" ");
+      _lines.Add("Type 'help' to see available commands.");
    }
 
    private async Task ScrollToBottom()
    {
       await JsRuntime.InvokeVoidAsync("scrollToBottom", _bodyRef);
+   }
+
+   public void Dispose()
+   {
+      _lines.Dispose();
    }
 }

@@ -14,4 +14,8 @@
     <Folder Include="wwwroot\technologies\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Me.Memory" />
+  </ItemGroup>
+
 </Project>
