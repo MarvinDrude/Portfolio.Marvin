@@ -50,7 +50,8 @@ h4.job {
     border-bottom: 1px solid var(--color-quaternary);
 }
 
-.technologies {
+.technologies,
+.public-souce {
     font-size: 20px;
     font-weight: 400;
     color: var(--color-secondary);

@@ -29,3 +29,11 @@
     font-size: 20px;
     color: var(--color-primary);
 }
+
+.philosophy {
+    margin-top: 20px;
+}
+
+.philosophy p {
+    padding-bottom: 10px;
+}
