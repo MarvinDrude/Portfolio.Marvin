@@ -1,9 +1,12 @@
-﻿@using Me.Memory.Buffers
+﻿@using System.Net
+@using Me.Memory.Buffers
 @using Portfolio.Marvin.Components.Common
+@using Portfolio.Marvin.Terminals
 
 @implements IDisposable
 
 @inject IJSRuntime JsRuntime
+@inject TerminalCommandHandler CommandHandler
 
 <div class="terminal" @onclick="@EventCallback.Factory.Create(this, OnClickInsideTerminal)">
    <div class="bar">
@@ -22,7 +25,7 @@
       <div class="history">
       @foreach (var line in _lines)
       {
-         <pre class="line">@line</pre>
+         <pre class="line">@(new MarkupString(line))</pre>
       }
       </div>
       <div class="input">
@@ -52,6 +55,8 @@
    private const int _maxLines = 100;
 
    private string? _input;
+   private bool _shouldScroll;
+   private bool _initialized;
 
    protected override Task OnInitializedAsync()
    {
@@ -59,20 +64,61 @@
       return base.OnInitializedAsync();
    }
 
+   protected override async Task OnAfterRenderAsync(bool firstRender)
+   {
+      if (_shouldScroll)
+      {
+         _shouldScroll = false;
+         await ScrollToBottom();
+      }
+
+      if (firstRender)
+      {
+         const string joke = "reallife";
+         const string skills = "skills";
+
+         await FireCommand(joke);
+         await FireCommand(skills);
+         
+         await InvokeAsync(StateHasChanged);
+         _initialized = true;
+      }
+   }
+
+   private async Task FireCommand(string command)
+   {
+      _lines.Add(command);
+         
+      await CommandHandler.Execute(new TerminalContext()
+      {
+         Buffer = _lines,
+         RawText = command
+      });
+   }
+
    private async Task OnClickInsideTerminal()
    {
-      await _textAreaRef.FocusAsync();
+      await _textAreaRef.FocusAsync(true);
    }
 
    private async Task OnKeyDown(KeyboardEventArgs args)
    {
-      if (args.Key != "Enter") return;
+      if (args.Key != "Enter" || !_initialized) return;
+
+      var before = _input ?? string.Empty;
+      before = WebUtility.HtmlEncode(before);
       
-      _lines.Add(_input ?? " ");
+      _lines.Add(before);
       _input = "";
-      
+
+      await CommandHandler.Execute(new TerminalContext()
+      {
+         Buffer = _lines,
+         RawText = before
+      });
+
+      _shouldScroll = true;
       await InvokeAsync(StateHasChanged);
-      await ScrollToBottom();
    }
 
    private void Reset()
