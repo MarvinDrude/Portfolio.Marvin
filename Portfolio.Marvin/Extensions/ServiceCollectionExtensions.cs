@@ -18,7 +18,8 @@ public static class ServiceCollectionExtensions
    public static IServiceCollection AddProviders(this IServiceCollection services, IConfiguration configuration)
    {
       return services
-         .AddSingleton<ITechnologyProvider, TechnologyProvider>();
+         .AddSingleton<ITechnologyProvider, TechnologyProvider>()
+         .AddSingleton<IExperienceProvider, ExperienceProvider>();
    }
 
    public static IServiceCollection AddTerminalCommands(this IServiceCollection services, IConfiguration configuration)

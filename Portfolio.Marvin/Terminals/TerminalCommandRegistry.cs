@@ -5,7 +5,7 @@ namespace Portfolio.Marvin.Terminals;
 
 public sealed class TerminalCommandRegistry
 {
-   private readonly Dictionary<string, ITerminalCommand> _commands = [];
+   private readonly Dictionary<string, ITerminalCommand> _commands = new (StringComparer.OrdinalIgnoreCase);
 
    public TerminalCommandRegistry(IEnumerable<ITerminalCommand> commands)
    {

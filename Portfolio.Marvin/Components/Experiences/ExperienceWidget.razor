@@ -1,0 +1,56 @@
+﻿@using Portfolio.Marvin.Components.Common
+@using Portfolio.Marvin.Models.Experiences
+
+<div class="wrapper">
+   <div class="timeline">
+      <div class="line"></div>
+   </div>
+   <div class="panel">
+      <div class="time">
+         @GetDatesString()
+      </div>
+      <div class="details">
+         <div class="header">
+            <div class="icon">
+               <div class="company-image" style="background-image: url('@(@Experience.CompanyImageUrl)')"></div>
+            </div>
+            <div class="text">
+               <div class="job-title">
+                  @Experience.JobTitle
+               </div>
+               <div class="company">
+                  @Experience.CompanyName
+               </div>
+            </div>
+         </div>
+         <ul class="desc">
+            @foreach (var note in Experience.Descriptions)
+            {
+               <li>@note</li>
+            }
+         </ul>
+      </div>
+      <div class="technologies">
+         <TechnologyList Kinds="Experience.Technologies"></TechnologyList>
+      </div>
+   </div>
+</div>
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required Experience Experience { get; set; }
+
+   private string GetDatesString()
+   {
+      return $"{GetDateString(Experience.StartedAt)} — {GetDateString(Experience.EndedAt)}";
+   }
+   
+   private string GetDateString(DateTimeOffset date)
+   {
+      return date == DateTimeOffset.MaxValue 
+         ? "PRESENT" 
+         : $"{date.Month:D2}-{date.Year}";
+   }
+   
+}

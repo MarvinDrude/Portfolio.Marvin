@@ -1,0 +1,27 @@
+﻿@using Portfolio.Marvin.Models.Experiences
+@using Portfolio.Marvin.Providers.Interfaces
+
+@inject IExperienceProvider Provider
+
+
+@if (_experiences is not null)
+{
+   <div>
+      @foreach (var experience in _experiences)
+      {
+         <ExperienceWidget Experience="@experience"></ExperienceWidget>
+      }
+   </div>
+}
+
+@code {
+
+   private List<Experience>? _experiences;
+
+   protected override Task OnInitializedAsync()
+   {
+      _experiences = [.. Provider.GetAllExperiences()];
+      return base.OnInitializedAsync();
+   }
+
+}
