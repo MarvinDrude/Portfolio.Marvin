@@ -1,0 +1,41 @@
+﻿@using Portfolio.Marvin.Models.Projects
+
+<div class="project">
+   <div class="left">
+      <div class="header">
+         @if (Project.ProjectUrl is not null)
+         {
+            <div class="button-wrapper">
+               <a class="go-to" target="_blank" href="@Project.ProjectUrl">Go to project</a>
+            </div>
+         }
+         <div class="text">
+            <h3>@Project.Name</h3>
+            <div class="since">SINCE @(Project.StartedAt.ToString("MM-yyyy"))</div>
+         </div>
+      </div>
+
+      <ul>
+         @foreach (var note in Project.Descriptions)
+         {
+            <li>@note</li>
+         }
+      </ul>
+   </div>
+   @if (Project.ImageUrls.Count > 0)
+   {
+      <div class="right">
+         @foreach (var imageUrl in Project.ImageUrls)
+         {
+            <img src="@(imageUrl)" width="100%" alt="Project image..." loading="lazy" />
+         }
+      </div>
+   }
+</div>
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required Project Project { get; set; }
+   
+}

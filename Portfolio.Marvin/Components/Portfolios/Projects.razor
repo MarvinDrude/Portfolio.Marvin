@@ -1,5 +1,25 @@
-﻿test
+﻿@using Portfolio.Marvin.Models.Projects
+@using Portfolio.Marvin.Providers.Interfaces
+
+@inject IProjectProvider ProjectProvider
+
+@if (_projects is not null)
+{
+   foreach (var project in _projects)
+   {
+      <ProjectWidget Project="@project"></ProjectWidget>
+   }
+}
 
 @code {
-   
+
+   private List<Project>? _projects;
+
+   protected override Task OnInitializedAsync()
+   {
+      _projects = [.. ProjectProvider.GetAllProjects()];
+      
+      return base.OnInitializedAsync();
+   }
+
 }
