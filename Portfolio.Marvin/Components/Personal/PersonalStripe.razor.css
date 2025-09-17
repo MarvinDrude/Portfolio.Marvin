@@ -57,3 +57,28 @@ h4.job {
     color: var(--color-secondary);
     padding: 40px 0 20px 0;
 }
+
+.me-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1560px) {
+
+    .personal {
+        padding: 40px 30px;
+    }
+
+}
+
+@media (max-width: 1350px) {
+
+    
+    
+}
+
+@media (max-width: 1120px) {
+
+
+
+}

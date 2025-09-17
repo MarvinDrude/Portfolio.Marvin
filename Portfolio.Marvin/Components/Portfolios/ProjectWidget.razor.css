@@ -80,3 +80,19 @@ img {
     background-color: var(--main-color-2);
     cursor: pointer;
 }
+
+@media (max-width: 1120px) {
+
+    ul {
+        margin-bottom: 20px;
+    }
+    
+    ul li {
+        font-size: 17px;
+    }
+    
+    .project {
+        flex-direction: column;
+    }
+
+}

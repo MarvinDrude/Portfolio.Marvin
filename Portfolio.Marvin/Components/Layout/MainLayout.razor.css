@@ -7,3 +7,19 @@
     align-items: stretch;
     margin: 0 auto;
 }
+
+@media (max-width: 1560px) {
+
+    .page {
+        grid-template-columns: 1fr 350px;
+    }
+
+}
+
+@media (max-width: 1350px) {
+
+    .page {
+        grid-template-columns: 1fr;
+    }
+    
+}
