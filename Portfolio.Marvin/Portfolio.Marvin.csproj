@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BlogPages\" />
+    <Folder Include="wwwroot\blogs-pages\tcp-series\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\technologies\" />

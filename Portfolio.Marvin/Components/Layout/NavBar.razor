@@ -1,5 +1,5 @@
 ﻿
-<nav id="nav">
+<nav id="nav" class="@(_isMenuOpen ? "open" : "")">
    <div class="left">
       <NavLink href="/#nav">Start</NavLink>
       <NavLink href="/#experiences">Experiences</NavLink>
@@ -8,10 +8,21 @@
       <NavLink href="/blog">Blog</NavLink>
    </div>
    <div class="right">
-      
+      <div class="burger" @onclick="@ToggleMenu">
+         <div></div>
+         <div></div>
+         <div></div>
+      </div>
    </div>
 </nav>
 
 @code {
-   
+
+   private bool _isMenuOpen;
+
+   private void ToggleMenu()
+   {
+      _isMenuOpen = !_isMenuOpen;
+   }
+
 }

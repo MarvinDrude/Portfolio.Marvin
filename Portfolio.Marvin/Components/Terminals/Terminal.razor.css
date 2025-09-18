@@ -85,12 +85,19 @@
 }
 
 .body pre {
-    word-wrap: break-word;
-    overflow: hidden;
-    hite-space: pre-wrap;
-    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .history {
     overflow: hidden;
 }
+
+@media (max-width: 950px) {
+
+    .bar .right {
+        display: none;
+    }
+    
+}
+

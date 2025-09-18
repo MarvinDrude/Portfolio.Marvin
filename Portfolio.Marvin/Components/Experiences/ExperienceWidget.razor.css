@@ -91,7 +91,7 @@
 .details ul li {
     color: var(--color-secondary);
     padding-bottom: 10px;
-    font-size: 13px;
+    font-size: 15px;
     display: flex;
     gap: 0.6rem;
     align-items: center;

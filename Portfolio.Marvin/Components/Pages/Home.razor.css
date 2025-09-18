@@ -22,3 +22,21 @@
 .section > .content {
     padding: 20px 0;
 }
+
+@media (max-width: 950px) {
+
+    .terminal-wrapper {
+        padding: 60px 10px 20px 10px;
+    }
+    
+    .section {
+        padding-top: 50px;
+        padding-left: 5px;
+        padding-right: 15px;
+    }
+
+    .section > h2 {
+        padding: 10px;
+    }
+    
+}

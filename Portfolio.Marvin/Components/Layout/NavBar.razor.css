@@ -23,3 +23,59 @@ nav > div {
     background-color: rgba(0,0,0,0.2);
     cursor: pointer;
 }
+
+nav .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+nav .burger:hover {
+    transition: .3s ease all;
+    background-color: rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+nav .burger div {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+nav .right {
+    height: var(--nav-height);
+}
+
+@media (max-width: 950px) {
+
+    nav.open {
+        background-color: #080e14;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    nav .left {
+        display: none;
+        flex-direction: column;
+        background-color: #080e14;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        padding: 20px;
+        z-index: 50;
+    }
+    
+    nav.open .left {
+        display: flex;
+    }
+    
+    nav .burger {
+        display: flex;
+    }
+    
+}

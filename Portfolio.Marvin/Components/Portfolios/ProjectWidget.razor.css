@@ -7,7 +7,7 @@
 ul li {
     color: var(--color-secondary);
     padding-bottom: 10px;
-    font-size: 13px;
+    font-size: 15px;
     display: flex;
     gap: 0.6rem;
     align-items: center;
@@ -95,4 +95,21 @@ img {
         flex-direction: column;
     }
 
+}
+
+@media (max-width: 950px) {
+
+    .project {
+        padding: 0 5px 0 10px;
+    }
+    
+    .header {
+        flex-direction: column-reverse;
+        align-items: baseline;
+    }
+
+    ul {
+        top: 20px;
+    }
+    
 }
