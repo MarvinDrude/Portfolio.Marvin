@@ -1,0 +1,48 @@
+﻿
+.preview {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #101419;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    border: 1px solid var(--color-quaternary);
+}
+
+.preview:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.preview .image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.preview .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview h3 {
+    padding: 20px 20px 10px 20px;
+    font-weight: 450;
+    font-size: 18px;
+}
+
+.preview .tags {
+    padding: 10px 20px 30px 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.preview .tags .tag {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #1a242d;
+}

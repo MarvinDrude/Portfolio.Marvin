@@ -1,0 +1,91 @@
+﻿.page {
+    padding: 20px;
+}
+
+.page > h1 {
+    color: var(--color-primary);
+    font-size: 30px;
+    padding: 0 0 10px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--color-quaternary);
+    font-weight : 450;
+}
+
+.articles {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    flex: 1;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+.content .filter {
+    width: 300px;
+    border-left: 1px solid var(--color-quaternary);
+    padding: 20px;
+}
+
+.filter .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter .tags .tag {
+    font-size: 19px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 7px 15px;
+    background-color: #101419;
+    border: 1px solid var(--color-quaternary);
+}
+
+.filter .tags .tag.active {
+    background-color: var(--main-color);
+}
+
+.filter .tags .tag:hover {
+    transition: .3s ease all;
+    background-color: var(--main-color);
+}
+
+@media (max-width: 2150px) {
+
+    .articles {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    
+}
+
+@media (max-width: 1690px) {
+
+    .articles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 950px) {
+
+    .articles {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .content .filter {
+        width: 100%;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+    
+    .page {
+        padding: 20px 10px;
+    }
+    
+}

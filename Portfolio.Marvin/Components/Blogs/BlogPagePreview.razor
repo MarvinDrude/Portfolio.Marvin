@@ -1,0 +1,21 @@
+﻿@using Portfolio.Marvin.Models.Blogs
+
+<a class="preview" href="@($"/blogs/{Page.Meta.RelativeUrl}")">
+   <div class="image-wrapper">
+      <img src="@Page.Meta.Image" loading="lazy" alt="..." />
+   </div>
+   <h3>@Page.Meta.Title</h3>
+   <div class="tags">
+      @foreach (var tag in Page.Meta.Tags)
+      {
+         <div class="tag">@tag</div>
+      }
+   </div>
+</a>
+
+@code {
+   
+   [Parameter, EditorRequired]
+   public required BlogPage Page { get; set; }
+   
+}

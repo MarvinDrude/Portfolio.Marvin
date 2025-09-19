@@ -1,0 +1,13 @@
+﻿
+.page {
+    padding: 20px;
+}
+
+.page > h1 {
+    font-size: 30px;
+    font-weight: 450;
+}
+
+.page > .content {
+    padding-top: 20px;
+}

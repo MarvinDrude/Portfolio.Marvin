@@ -17,4 +17,18 @@ public sealed class BlogPageMeta
    public DateTimeOffset Date { get; set; }
    
    public required string Image { get; set; }
+
+   public BlogPageMeta Clone()
+   {
+      return new BlogPageMeta
+      {
+         Title = Title,
+         RelativeUrl = RelativeUrl,
+         Description = Description,
+         Tags = [.. Tags],
+         Technologies = [.. Technologies],
+         Date = Date,
+         Image = Image
+      };
+   }
 }
