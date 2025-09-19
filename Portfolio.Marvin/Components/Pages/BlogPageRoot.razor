@@ -1,5 +1,6 @@
 ﻿@page "/blogs/{*RelativePath}"
 @using Microsoft.AspNetCore.Html
+@using Portfolio.Marvin.Components.Common
 @using Portfolio.Marvin.Models.Blogs
 @using Portfolio.Marvin.Providers.Interfaces
 
@@ -11,7 +12,23 @@
    <div class="page">
       <h1>@_blogPage.Meta.Title</h1>
       <div class="content">
-         @(new MarkupString(_blogPage.Content))
+         <div class="markdown">
+            @(new MarkupString(_blogPage.Content))
+         </div>
+         <div class="info">
+            <div class="image-wrapper">
+               <img src="@_blogPage.Meta.Image" loading="lazy" alt="..." />
+            </div>
+            <div class="tags">
+               @foreach (var tag in _blogPage.Meta.Tags)
+               {
+                  <div class="tag">@tag</div>
+               }
+            </div>
+            <div>
+               <TechnologyList Kinds="@_blogPage.Meta.Technologies" />
+            </div>
+         </div>
       </div>
    </div>
 }
