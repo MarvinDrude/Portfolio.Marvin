@@ -1,0 +1,9 @@
+﻿{
+  "Title": "C# High-Performance Tcp Server/Client - Part 1",
+  "RelativeUrl": "tcp-series/part-1",
+  "Description": "How to write a high performance tcp server and client in C# .NET 10",
+  "Tags": ["C#", ".NET", "Sockets", "Tcp", "Performance"],
+  "Technologies": [1, 2],
+  "Date": "19-09-2025",
+  "Image": "images/posts/tcp-series.webp"
+}

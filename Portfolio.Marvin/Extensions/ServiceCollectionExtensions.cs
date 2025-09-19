@@ -20,7 +20,8 @@ public static class ServiceCollectionExtensions
       return services
          .AddSingleton<ITechnologyProvider, TechnologyProvider>()
          .AddSingleton<IExperienceProvider, ExperienceProvider>()
-         .AddSingleton<IProjectProvider, ProjectProvider>();
+         .AddSingleton<IProjectProvider, ProjectProvider>()
+         .AddSingleton<IBlogProvider, BlogProvider>();
    }
 
    public static IServiceCollection AddTerminalCommands(this IServiceCollection services, IConfiguration configuration)

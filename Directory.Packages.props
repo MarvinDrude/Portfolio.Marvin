@@ -4,6 +4,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="Markdig" Version="0.42.0" />
     <PackageVersion Include="Me.Memory" Version="1.1.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />

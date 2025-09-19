@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\blogs-pages\tcp-series\" />
     <Folder Include="wwwroot\fonts\" />
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\posts\" />
     <Folder Include="wwwroot\technologies\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Markdig" />
     <PackageReference Include="Me.Memory" />
   </ItemGroup>
 

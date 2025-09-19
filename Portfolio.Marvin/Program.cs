@@ -1,5 +1,6 @@
 using Portfolio.Marvin.Components;
 using Portfolio.Marvin.Extensions;
+using Portfolio.Marvin.Providers.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,9 @@ builder.Services
     .AddPortfolioServices(builder.Configuration);
 
 var app = builder.Build();
+
+var blogProvider = app.Services.GetRequiredService<IBlogProvider>();
+await blogProvider.Reload();
 
 app.UseResponseCompression();
 
