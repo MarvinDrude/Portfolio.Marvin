@@ -7,6 +7,7 @@
 
 @inject IBlogProvider BlogProvider
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
 
 <PageTitle>@_blogPage?.Meta.Title</PageTitle>
 
@@ -52,12 +53,6 @@
          </div>
       </div>
    </div>
-   
-   <div>
-      <script src="highlight/highlight.min.js"></script>
-      <script src="highlight/languages/csharp.min.js"></script>
-      <script>hljs.highlightAll();</script>
-   </div>
 }
 
 @code {
@@ -76,6 +71,23 @@
       if (_blogPage is null)
       {
          NavigationManager.NavigateTo("/not-found");
+      }
+   }
+
+   protected override async Task OnAfterRenderAsync(bool firstRender)
+   {
+      if (_initialized && _blogPage is not null)
+      {
+         List<string> scripts = [
+            "highlight/highlight.min.js", 
+            "highlight/languages/csharp.min.js"
+         ];
+         var ret = await JsRuntime.InvokeAsync<bool>("loadScripts", scripts, true);
+
+         if (ret)
+         {
+            await JsRuntime.InvokeVoidAsync("window.hljs.highlightAll");
+         }
       }
    }
 
