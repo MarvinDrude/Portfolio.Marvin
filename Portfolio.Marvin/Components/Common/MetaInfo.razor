@@ -1,45 +1,41 @@
 ﻿
-<HeadContent>
+@if (Title is not null)
+{
+   <meta name="title" content="@Title" />
+   <meta property="twitter:title" content="@Title" />
+   <meta property="og:title" content="@Title" />
+}
    
-   @if (Title is not null)
-   {
-      <meta name="title" content="@Title" />
-      <meta property="twitter:title" content="@Title" />
-      <meta property="og:title" content="@Title" />
-   }
+@if (Description is not null)
+{
+   <meta name="description" content="@Description" />
+   <meta property="twitter:description" content="@Description" />
+   <meta property="og:description" content="@Description" />
+}
    
-   @if (Description is not null)
-   {
-      <meta name="description" content="@Description" />
-      <meta property="twitter:description" content="@Description" />
-      <meta property="og:description" content="@Description" />
-   }
+@if (ImageUrl is not null)
+{
+   <meta name="image" content="@ImageUrl" />
+   <meta property="twitter:image" content="@ImageUrl" />
+   <meta property="og:image" content="@ImageUrl" />
+}
    
-   @if (ImageUrl is not null)
-   {
-      <meta name="image" content="@ImageUrl" />
-      <meta property="twitter:image" content="@ImageUrl" />
-      <meta property="og:image" content="@ImageUrl" />
-   }
+@if (Keywords is not null)
+{
+   <meta name="keywords" content="@Keywords" />
+   <meta property="twitter:keywords" content="@Keywords" />
+   <meta property="og:keywords" content="@Keywords" />
+}
    
-   @if (Keywords is not null)
-   {
-      <meta name="keywords" content="@Keywords" />
-      <meta property="twitter:keywords" content="@Keywords" />
-      <meta property="og:keywords" content="@Keywords" />
-   }
+@if (Type is not null)
+{
+   <meta property="og:type" content="@Type" />
+}
    
-   @if (Type is not null)
-   {
-      <meta property="og:type" content="@Type" />
-   }
-   
-   @if (SiteName is not null)
-   {
-      <meta property="og:site_name" content="@SiteName" />
-   }
-   
-</HeadContent>
+@if (SiteName is not null)
+{
+   <meta property="og:site_name" content="@SiteName" />
+}
 
 @code {
    

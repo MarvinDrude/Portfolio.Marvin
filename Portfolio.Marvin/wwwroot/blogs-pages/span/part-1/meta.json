@@ -1,0 +1,9 @@
+﻿{
+  "Title": "Span<T> or: How I Learned to Stop Allocating and Love the Stack",
+  "RelativeUrl": "span/introduction",
+  "Description": "How to write zero-allocation c# code and why you should care.",
+  "Tags": ["C#", ".NET", "Span", "Memory", "Performance"],
+  "Technologies": [1, 2],
+  "Date": "2025-09-20T16:00:00+00:00",
+  "Image": "images/posts/span.webp"
+}

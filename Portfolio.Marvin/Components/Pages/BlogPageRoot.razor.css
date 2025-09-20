@@ -57,6 +57,89 @@
     border: 1px solid var(--color-quaternary);
 }
 
+::deep h2 {
+    color: var(--color-primary);
+    font-size: 24px;
+    padding: 0 0 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-quaternary);
+    font-weight : 400;
+    margin-top: 20px;
+}
+
+::deep h3 {
+    color: var(--color-primary);
+    font-size: 19px;
+    padding: 0 0 5px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-quaternary);
+    font-weight : 400;
+    margin-top: 20px;
+}
+
+::deep .markdown h2:first-child {
+    margin-top: 0;
+}
+
+::deep .markdown p {
+    margin-bottom: 20px;
+}
+
+::deep .markdown pre code {
+    margin: 20px 0;
+    border-radius: 6px;
+}
+
+::deep .markdown code:not([class]) {
+    background: #1e1e1e;
+    color: #dcdcaa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    white-space: nowrap;
+}
+
+::deep .markdown ul {
+    list-style-position: inside;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+::deep .markdown ul li {
+    padding-bottom: 10px;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+::deep .markdown ul li::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+::deep .markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 15px 0;
+    white-space: nowrap;
+    display: block;
+    overflow-x: auto;
+}
+
+::deep .markdown table th,
+::deep .markdown table td {
+    border: 1px solid #333;
+    padding: 8px 12px;
+}
+
+
+
 @media (max-width: 950px) {
 
     .page > .content {
