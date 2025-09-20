@@ -109,6 +109,8 @@ public string SpanExample()
 ### Benchmark Results
 The impact is immediately clear:
 
+<div class="table-wrapper">
+
 | Method       | N    | Mean     | Error     | StdDev   | Min      | Max      | Median   | Gen0   | Allocated |
 |------------- |----- |---------:|----------:|---------:|---------:|---------:|---------:|-------:|----------:|
 | NaiveExample | 10   | 58.64 ns |  0.367 ns | 0.131 ns | 58.46 ns | 58.78 ns | 58.66 ns | 0.0049 |     248 B |
@@ -118,3 +120,4 @@ The impact is immediately clear:
 | NaiveExample | 1000 | 73.12 ns | 10.299 ns | 3.673 ns | 68.31 ns | 78.71 ns | 73.09 ns | 0.0049 |     248 B |
 | SpanExample  | 1000 | 14.38 ns |  2.212 ns | 0.789 ns | 13.59 ns | 15.28 ns | 14.31 ns |      - |         - |
 
+</div>
