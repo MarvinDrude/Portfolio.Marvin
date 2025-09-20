@@ -1,6 +1,7 @@
 ﻿@page "/blogs/{*RelativePath}"
 @using Microsoft.AspNetCore.Html
 @using Portfolio.Marvin.Components.Common
+@using Portfolio.Marvin.Components.Personal
 @using Portfolio.Marvin.Models.Blogs
 @using Portfolio.Marvin.Providers.Interfaces
 
@@ -42,9 +43,12 @@
                   <div class="tag">@tag</div>
                }
             </div>
-            <div>
+            <div class="techs">
                <TechnologyList Kinds="@_blogPage.Meta.Technologies" />
             </div>
+            <PersonalLink SvgName="calendar">
+               <span>@(_blogPage.Meta.Date.ToString("yyyy-MM-dd"))</span>
+            </PersonalLink>
          </div>
       </div>
    </div>

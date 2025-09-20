@@ -59,6 +59,10 @@
     border: 1px solid var(--color-quaternary);
 }
 
+.techs {
+    margin-bottom: 30px;
+}
+
 ::deep h2 {
     color: var(--color-primary);
     font-size: 24px;
@@ -66,7 +70,7 @@
     margin-bottom: 10px;
     border-bottom: 1px solid var(--color-quaternary);
     font-weight : 400;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 ::deep h3 {

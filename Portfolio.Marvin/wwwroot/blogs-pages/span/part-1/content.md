@@ -121,3 +121,129 @@ The impact is immediately clear:
 | SpanExample  | 1000 | 14.38 ns |  2.212 ns | 0.789 ns | 13.59 ns | 15.28 ns | 14.31 ns |      - |         - |
 
 </div>
+
+## ArrayPool<T> and MemoryPool<T>
+
+`Span<T>` is fantastic for working with small slices, especially when you can leverage `stackalloc` for short-lived buffers.  
+However, stack space is limited, and once your buffers grow beyond a few kilobytes, heap allocations become unavoidable.
+
+This is where **buffer pooling** comes in. Instead of constantly allocating and freeing large arrays on the heap 
+(which puts stress on the GC),  
+you can rent and reuse memory from specialized pools.
+
+### ArrayPool<T>
+
+`ArrayPool<T>` is a high-performance, shared pool for arrays.  
+It lets you "rent" an array for temporary use and then "return" it when you’re done.  
+This way, the array can be recycled instead of being garbage collected.
+
+```csharp
+using System.Buffers;
+
+public class ArrayPoolExample
+{
+   public void ProcessLargeData()
+   { 
+      const int size = 1024 * 1024; // 1 MB
+      var pool = ArrayPool<byte>.Shared;
+
+      // Rent a buffer from the pool
+      byte[] buffer = pool.Rent(size);
+
+      try
+      {
+         // Use it as a Span<T> without allocations
+         var span = buffer.AsSpan(0, size);
+
+         // Do some work
+         span.Fill(42);
+      }
+      finally
+      {
+         // Important: always return the buffer
+         pool.Return(buffer);
+      }
+   }
+}
+```
+
+✅ Pros:
+
+- Extremely fast.
+- Great for temporary array usage.
+- Shared across the entire process.
+
+⚠️ Caveats:
+
+- Arrays can be larger than requested (`Rent` may overshoot).
+- Buffers are not cleared by default (data leakage if not overwritten).
+
+### MemoryPool<T>
+
+For scenarios involving streaming, I/O pipelines, or very large data buffers, `MemoryPool<T>` is a more advanced option.
+It provides `IMemoryOwner<T>` handles that can be disposed safely, and integrates naturally with `Memory<T>` and `Span<T>`.
+
+```csharp
+public class MemoryPoolExample
+{
+   public void UseMemoryPool()
+   {
+      using IMemoryOwner<byte> owner = MemoryPool<byte>.Shared.Rent(4096);
+      Memory<byte> memory = owner.Memory;
+
+      // Access as Span<T>
+      var span = memory.Span;
+      span[0] = 99;
+
+      // Pass Memory<T> to async APIs
+      SomeAsyncApi(memory);
+   }
+
+   private void SomeApi(Memory<byte> buffer)
+   {
+      // Example placeholder for I/O API accepting Memory<T>
+   }
+}
+```
+
+✅ Pros:
+
+- Integrates with ``Memory<T>`` and APIs.
+- Safe lifetime management via ``IMemoryOwner<T>``
+
+⚠️ Caveats:
+
+- Slightly more overhead than ``ArrayPool<T>``
+
+## Enhancements coming in .NET 10
+
+Up until now, `Span<T>` and `ReadOnlySpan<T>` have been incredibly powerful, 
+but the C# compiler treated them as "second-class citizens". 
+They worked well in APIs that explicitly targeted them, but required lots of boilerplate overloads and 
+explicit conversions to cover arrays, strings, and spans.
+
+Starting with **C# 14 / .NET 10**, spans become **first-class language citizens**.  
+This means the compiler understands them as naturally as arrays and strings, making code more intuitive and eliminating many duplicate APIs.
+
+### Key Improvements
+
+- **Implicit conversions everywhere**
+- `T[]` → `Span<T>`
+- `T[]` → `ReadOnlySpan<T>`
+- `Span<T>` → `ReadOnlySpan<T>`
+- `string` → `ReadOnlySpan<char>`
+
+<br/>
+No need to call `.AsSpan()` or provide extra overloads anymore.
+<br/>
+
+- Better type inference
+- Generics that work with spans and arrays now infer types more naturally.
+- Example: methods that accept `ReadOnlySpan<T>` will accept arrays without ambiguity or explicit type parameters.
+
+### Why this matters
+
+- Cleaner APIs with fewer overloads.
+- Less ceremony (`.AsSpan()` everywhere is no longer needed).
+- Safer overload resolution that aligns with how the runtime actually optimizes spans.
+- A future where spans integrate more seamlessly with collections, UTF-8 strings, and async streaming APIs.
