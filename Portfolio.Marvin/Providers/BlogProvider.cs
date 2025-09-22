@@ -1,7 +1,14 @@
 ﻿using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using Markdig;
+using Markdig.Renderers;
+using Markdig.Renderers.Html;
+using Markdig.Syntax;
+using Me.Memory.Serialization;
+using Portfolio.Marvin.Markdown.Renderers;
 using Portfolio.Marvin.Models.Blogs;
 using Portfolio.Marvin.Providers.Interfaces;
 
@@ -81,7 +88,18 @@ public sealed class BlogProvider : IBlogProvider
          _tags[tag] = true;
       }
 
-      var markdown = Markdown.ToHtml(rawContent, _markdownPipeline);
+      using var writer = new StringWriter();
+      var renderer = new HtmlRenderer(writer);
+      
+      _markdownPipeline.Setup(renderer);
+
+      // TODO: fix list rendering bug
+      
+      var doc = Markdig.Markdown.Parse(rawContent, _markdownPipeline);
+      renderer.Render(doc);
+      writer.Flush();
+
+      var markdown = writer.ToString();
 
       _pages[meta.RelativeUrl] = new BlogPage()
       {
