@@ -6,12 +6,12 @@ window.scrollToBottom = (element, behavior) => {
     });
 }
 
-window.loadScript = (url, sync) => {
+window.loadScript = (url, sync, isModule) => {
     
     return new Promise((resolve, reject) => {
        
         const script = document.createElement('script');
-        script.type = 'text/javascript';
+        script.type = isModule ? 'module' : 'text/javascript';
         script.src = url;
         script.async = !sync;
         
@@ -24,12 +24,13 @@ window.loadScript = (url, sync) => {
     
 }
 
-window.loadScripts = async (urls, sync) => {
+window.loadScripts = async (urls, sync, isModule) => {
     
     const promises = urls.map(url => {
-        return loadScript(url, sync);
+        return loadScript(url, sync, isModule);
     });
     
     const results = await Promise.all(promises);
     return results.filter(x => !x).length === 0;
+    
 }

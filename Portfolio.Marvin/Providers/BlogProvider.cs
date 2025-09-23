@@ -95,8 +95,6 @@ public sealed class BlogProvider : IBlogProvider
       renderer.ObjectRenderers.Add(new SpanListItemRenderer());
       
       _markdownPipeline.Setup(renderer);
-
-      // TODO: fix list rendering bug
       
       var doc = Markdig.Markdown.Parse(rawContent, _markdownPipeline);
       renderer.Render(doc);

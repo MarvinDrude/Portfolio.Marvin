@@ -83,6 +83,7 @@
     margin-top: 20px;
 }
 
+    
 ::deep .markdown h2:first-child {
     margin-top: 0;
 }
@@ -107,6 +108,25 @@
     border-radius: 4px;
     font-size: 0.95em;
     white-space: nowrap;
+}
+
+::deep .markdown pre.shiki {
+    padding: 15px;
+}
+
+::deep .markdown code[class] {
+    counter-reset: step;
+    counter-increment: step 0;
+}
+
+::deep .markdown code[class] .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: rgba(115,138,148,.4)
 }
 
 ::deep .markdown ul {
