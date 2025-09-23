@@ -10,8 +10,8 @@ Here are some of the most interesting / awesome examples & use-cases, what they 
 
 Here are what C# 14 lets you do with extension members that you couldn’t (or not cleanly) do before:
 
-- Instance extension properties (in addition to methods) e.g. myList.IsEmpty instead of myList.IsEmpty().
-- Static extension members that "live" on the type rather than instances. For example static methods/properties callable like Type.Foo(...).
+- Instance extension properties (in addition to methods) e.g. myList.IsEmpty instead of ``myList.IsEmpty()``.
+- Static extension members that "live" on the type rather than instances. For example static methods/properties callable like ``Type.Foo(...)``.
 - Extension operators (e.g. operator +) in static extension context.
 - Ref returns of ref structs or its members.
 - Grouping of related extension members under a shared receiver via the extension block, 

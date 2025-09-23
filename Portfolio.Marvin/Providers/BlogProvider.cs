@@ -90,6 +90,9 @@ public sealed class BlogProvider : IBlogProvider
 
       using var writer = new StringWriter();
       var renderer = new HtmlRenderer(writer);
+
+      renderer.ObjectRenderers.RemoveAll(x => x is ListRenderer);
+      renderer.ObjectRenderers.Add(new SpanListItemRenderer());
       
       _markdownPipeline.Setup(renderer);
 

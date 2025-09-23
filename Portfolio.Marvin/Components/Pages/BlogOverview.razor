@@ -1,10 +1,23 @@
 ﻿@page "/blog"
 @using Me.Memory.Extensions
 @using Portfolio.Marvin.Components.Blogs
+@using Portfolio.Marvin.Components.Common
 @using Portfolio.Marvin.Models.Blogs
 @using Portfolio.Marvin.Providers.Interfaces
 
 @inject IBlogProvider BlogProvider
+
+<PageTitle>Marvin Drude - Blog Overview</PageTitle>
+<HeadContent>
+   <MetaInfo 
+      Title="Marvin Drude - Blog Overview"
+      Description="Articles of Marvin Drude - Senior Full Stack Developer"
+      Keywords="Marvin Drude, Portfolio, C#, .NET, Software Developer"
+      SiteName="Marvin Drude"
+      ImageUrl="/brand.webp"
+      Type="website"
+   />
+</HeadContent>
 
 <div class="page">
    <h1>Articles</h1>
