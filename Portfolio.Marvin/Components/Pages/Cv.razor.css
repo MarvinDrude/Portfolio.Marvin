@@ -111,6 +111,7 @@
     font-style: italic;
     font-weight: 600;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .right .job::after {
@@ -122,7 +123,6 @@
     right: 20px;
     height: 4px;
     background-color: #1f3864;
-    margin-bottom: 20px;
 }
 
 .right h2 {
