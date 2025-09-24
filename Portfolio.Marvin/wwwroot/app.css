@@ -7,11 +7,19 @@
 }
 
 @font-face {
-    font-family: Roboto;
-    src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf");
+    font-family: Inter;
+    src: url("fonts/Inter-Italic-VariableFont_wght.ttf");
     font-weight: 100 900;
     font-display: swap;
     font-style: italic;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("fonts/Inter-VariableFont_wght.ttf");
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
 }
 
 :root {
@@ -28,6 +36,9 @@
     
     --main-color: #2D68F6;
     --main-color-2: #0a4be6;
+    
+    --cv-width: 210mm;
+    --cv-height: 297mm;
 }
 
 * {
@@ -36,7 +47,7 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;    
-    font-family: Roboto, serif;
+    font-family: Inter, serif;
     outline: none;
 }
 
@@ -55,4 +66,25 @@ body {
 
 .hide {
     display: none !important;
+}
+
+@media print {
+
+    html, body {
+        padding: 0;
+        width: var(--cv-width);
+        height: var(--cv-height);
+    }
+
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    img, svg {
+        display: block !important;
+        visibility: visible !important;
+    }
+    
 }

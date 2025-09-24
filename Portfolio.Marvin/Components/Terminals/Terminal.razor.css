@@ -8,6 +8,11 @@
     --bar-height: 50px;
     height: var(--height);
     background-color: #191e23;
+    font-family: Roboto, serif !important;
+}
+
+.terminal * {
+    font-family: Roboto, serif !important;
 }
 
 .bar {

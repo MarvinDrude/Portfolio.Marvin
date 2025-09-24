@@ -1,0 +1,51 @@
+﻿
+@layout CvLayout 
+@page "/cv"
+@using Portfolio.Marvin.Components.Common
+@using Portfolio.Marvin.Providers.Interfaces
+
+@inject IExperienceProvider ExperienceProvider
+
+<PageTitle>Marvin Drude - CV - Senior Full Stack Softare Developer</PageTitle>
+<HeadContent>
+   <MetaInfo Title="Marvin Drude - CV"
+             Description="CV of Marvin Drude - Senior Full Stack Software Developer"
+             ImageUrl="/brand.webp"
+             Keywords="CV, Marvin Drude, Senior Full Stack, Software Developer"
+             SiteName="Marvin Drude - Portfolio"
+             Type="website" />
+</HeadContent>
+
+<div class="cv-page first">
+   <div class="left">
+      <div class="header">
+         <div class="line">
+            <div class="image-wrapper">
+               <div class="me-image"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="right">
+      <div class="header">
+         <h1>Marvin Drude</h1>
+      </div>
+      <div class="job">
+         Senior Full Stack Software Developer
+      </div>
+      
+      <h2>Professional Experiences</h2>
+      @foreach (var experience in ExperienceProvider.GetAllExperiences())
+      {
+         
+      }
+   </div>
+</div>
+
+<div class="cv-page">
+   
+</div>
+
+@code {
+   
+}

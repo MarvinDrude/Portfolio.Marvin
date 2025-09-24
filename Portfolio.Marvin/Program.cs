@@ -18,7 +18,7 @@ var app = builder.Build();
 var blogProvider = app.Services.GetRequiredService<IBlogProvider>();
 await blogProvider.Reload();
 
-app.UseResponseCompression();
+app.UseResponseCompression(); 
 
 if (!app.Environment.IsDevelopment())
 {

@@ -1,0 +1,15 @@
+﻿
+.content {
+    background-color: #282828;
+    padding: 20px;
+}
+
+@media print {
+
+    .content {
+        padding: 0;
+        width: var(--cv-width);
+        height: var(--cv-height);
+    }
+
+}

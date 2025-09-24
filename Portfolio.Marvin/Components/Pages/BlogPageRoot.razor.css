@@ -90,6 +90,7 @@
 
 ::deep .markdown p {
     margin-bottom: 20px;
+    font-size: 17px !important;
 }
 
 ::deep .markdown pre {
@@ -117,6 +118,11 @@
 ::deep .markdown code[class] {
     counter-reset: step;
     counter-increment: step 0;
+    font-family: Roboto, serif !important;
+}
+
+::deep .markdown code[class] * {
+    font-family: Roboto, serif !important;
 }
 
 ::deep .markdown code[class] .line::before {
@@ -140,6 +146,7 @@
     display: flex;
     gap: 0.6rem;
     align-items: center;
+    font-size: 17px !important;
 }
 
 ::deep .markdown ul li::before {
@@ -163,8 +170,8 @@
     display: table;
     min-width: 500px;
     border-collapse: collapse;
-    font-size: 0.9em;
     white-space: nowrap;
+    font-size: 17px !important;
 }
 
 ::deep .markdown table th,

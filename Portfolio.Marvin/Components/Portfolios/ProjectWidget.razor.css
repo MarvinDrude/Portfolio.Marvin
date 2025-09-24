@@ -7,7 +7,7 @@
 ul li {
     color: var(--color-secondary);
     padding-bottom: 10px;
-    font-size: 15px;
+    font-size: 16px;
     display: flex;
     gap: 0.6rem;
     align-items: center;
