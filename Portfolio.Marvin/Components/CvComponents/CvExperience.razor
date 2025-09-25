@@ -1,8 +1,12 @@
-﻿
+﻿@using Portfolio.Marvin.Models.Experiences
 
+<div>
+   <h3>@Experience.</h3>
+</div>
 
 @code {
    
-   
+   [Parameter, EditorRequired]
+   public required Experience Experience { get; set; }
    
 }

@@ -2,6 +2,8 @@
 @layout CvLayout 
 @page "/cv"
 @using Portfolio.Marvin.Components.Common
+@using Portfolio.Marvin.Components.CvComponents
+@using Portfolio.Marvin.Models.Experiences
 @using Portfolio.Marvin.Providers.Interfaces
 
 @inject IExperienceProvider ExperienceProvider
@@ -35,9 +37,9 @@
       </div>
       
       <h2>Professional Experiences</h2>
-      @foreach (var experience in ExperienceProvider.GetAllExperiences())
+      @foreach (var experience in _experiences)
       {
-         
+         <CvExperience Experience="@experience"/>
       }
    </div>
 </div>
@@ -47,5 +49,13 @@
 </div>
 
 @code {
-   
+
+   private List<Experience> _experiences = [];
+
+   protected override Task OnAfterRenderAsync(bool firstRender)
+   {
+      _experiences = [.. ExperienceProvider.GetAllExperiences()];
+      return base.OnAfterRenderAsync(firstRender);
+   }
+
 }
