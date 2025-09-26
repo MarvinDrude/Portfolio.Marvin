@@ -26,12 +26,17 @@
 }
 
 .cv-page {
-    display: grid;
-    grid-template-columns: 36% 1fr;
-    grid-gap: 0;
     --header-height: 25%;
     position: relative;
     color: #000;
+    padding: 40px 35px;
+}
+
+.cv-page.first {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 36% 1fr;
+    grid-gap: 0;
 }
 
 .cv-page * {
@@ -131,4 +136,44 @@
     font-weight: 650;
     color: #1f3864;
     padding: 0 20px 20px 20px;
+}
+
+.left * {
+    color: #fff;
+}
+
+.left h4 {
+    text-transform: uppercase;
+    font-weight: 350;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
+}
+
+.left {
+    --svg-width: 19px;
+    --svg-height: 19px;
+}
+
+::deep .left .link {
+    font-size: 14px;
+}
+
+.contact,
+.languages,
+.tools,
+.interests,
+.school {
+    padding: 0 20px 20px 20px;
+}
+
+.school div {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.school div p {
+    font-size: 15px;
+    margin-bottom: 5px;
+    display: block;
 }

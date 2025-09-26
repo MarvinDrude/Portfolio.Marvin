@@ -3,10 +3,15 @@
 @page "/cv"
 @using Portfolio.Marvin.Components.Common
 @using Portfolio.Marvin.Components.CvComponents
+@using Portfolio.Marvin.Components.Personal
+@using Portfolio.Marvin.Enums
 @using Portfolio.Marvin.Models.Experiences
+@using Portfolio.Marvin.Models.Projects
 @using Portfolio.Marvin.Providers.Interfaces
 
 @inject IExperienceProvider ExperienceProvider
+@inject IProjectProvider ProjectProvider
+@inject ITechnologyProvider TechnologyProvider
 
 <PageTitle>Marvin Drude - CV - Senior Full Stack Softare Developer</PageTitle>
 <HeadContent>
@@ -27,6 +32,50 @@
             </div>
          </div>
       </div>
+      <div class="contact">
+         <h4>Contact</h4>
+         <PersonalLink SvgName="marker">
+            <span class="link">NRW, Germany</span>
+         </PersonalLink>
+         <PersonalLink SvgName="browser">
+            <span class="link">https://marvindrude.com</span>
+         </PersonalLink>
+         <PersonalLink SvgName="github">
+            <span class="link">https://github.com/MarvinDrude</span>
+         </PersonalLink>
+         <PersonalLink SvgName="mobile">
+            <span class="link">on request</span>
+         </PersonalLink>
+      </div>
+      <div class="languages">
+         <h4>Technologies</h4>
+         <div class="list">
+            @(string.Join(", ", _technologies
+               .Select(x => TechnologyProvider.GetTechnology(x))
+               .Where(x => x is not null)
+               .Select(x => x!.Name)))
+         </div>
+      </div>
+      <div class="tools">
+         <h4>Tools</h4>
+         <div class="list">
+            Git, GitHub, Docker, Visual Studio, Visual Studio Code, UI Design, Rider
+         </div>
+      </div>
+      <div class="school">
+         <h4>Education</h4>
+         <div>
+            <p>Berufskolleg Schloß Neuhaus</p>
+            High school diploma with a focus on mathematics and computer science, 
+            as well as business administration with accounting and controlling.
+         </div>
+      </div>
+      <div class="interests">
+         <h4>Interests</h4>
+         <div>
+            Weight training, movies & TV shows, programming, UI design
+         </div>
+      </div>
    </div>
    <div class="right">
       <div class="header">
@@ -37,25 +86,51 @@
       </div>
       
       <h2>Professional Experiences</h2>
-      @foreach (var experience in _experiences)
+      @foreach (var experience in _experiences.Take(3))
       {
          <CvExperience Experience="@experience"/>
       }
    </div>
 </div>
 
-<div class="cv-page">
+<div class="cv-page right">
+   @foreach (var experience in _experiences.Skip(3))
+   {
+      <CvExperience Experience="@experience"/>
+   }
    
+   <h2>Personal Projects</h2>
+   @foreach (var project in _projects.Take(4))
+   {
+      <CvProject Project="@project" />
+   }
+</div>
+
+<div class="cv-page right">
+   @foreach (var project in _projects.Skip(4))
+   {
+      <CvProject Project="@project" />
+   }
 </div>
 
 @code {
 
    private List<Experience> _experiences = [];
+   private List<Project> _projects = [];
 
-   protected override Task OnAfterRenderAsync(bool firstRender)
+   private static readonly List<TechnologyKind> _technologies = [
+      TechnologyKind.CSharp, TechnologyKind.Net, TechnologyKind.Blazor,
+      TechnologyKind.Html5, TechnologyKind.Css, TechnologyKind.JavaScript,
+      TechnologyKind.PostgreSql, TechnologyKind.MySql, TechnologyKind.Clickhouse,
+      TechnologyKind.NodeJs, TechnologyKind.SqlServer, TechnologyKind.TypeScript
+   ];
+
+   protected override Task OnInitializedAsync()
    {
       _experiences = [.. ExperienceProvider.GetAllExperiences()];
-      return base.OnAfterRenderAsync(firstRender);
+      _projects = [.. ProjectProvider.GetAllProjects()];
+      
+      return base.OnInitializedAsync();
    }
 
 }

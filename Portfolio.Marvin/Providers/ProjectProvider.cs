@@ -64,7 +64,7 @@ public sealed class ProjectProvider : IProjectProvider
       {
          Name = "SiteSights io",
          StartedAt = new DateTimeOffset(2023, 3, 2, 0, 0, 0, TimeSpan.Zero),
-         ProjectUrl = null,
+         ProjectUrl = "https://sitesights.io",
          ImageUrls = [
             "projects/sitesights/1.webp",
             "projects/sitesights/2.webp",
@@ -88,7 +88,7 @@ public sealed class ProjectProvider : IProjectProvider
       {
          Name = "Rewrote io",
          StartedAt = new DateTimeOffset(2023, 3, 1, 0, 0, 0, TimeSpan.Zero),
-         ProjectUrl = null,
+         ProjectUrl = "https://rewrote.io",
          ImageUrls = [
             "projects/rewrote/1.webp",
             "projects/rewrote/2.webp",
@@ -109,7 +109,7 @@ public sealed class ProjectProvider : IProjectProvider
       {
          Name = "Gidd io",
          StartedAt = new DateTimeOffset(2021, 2, 1, 0, 0, 0, TimeSpan.Zero),
-         ProjectUrl = null,
+         ProjectUrl = "https://gidd.io",
          ImageUrls = [
             "projects/giddio/1.webp",
             "projects/giddio/2.webp",
@@ -133,7 +133,7 @@ public sealed class ProjectProvider : IProjectProvider
       {
          Name = "SpeedAutoClicker",
          StartedAt = new DateTimeOffset(2020, 5, 1, 0, 0, 0, TimeSpan.Zero),
-         ProjectUrl = null,
+         ProjectUrl = "https://speedautoclicker.net",
          ImageUrls = [
             "projects/speedautoclicker/1.webp",
             "projects/speedautoclicker/2.webp",

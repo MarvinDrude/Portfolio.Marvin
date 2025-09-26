@@ -1,10 +1,10 @@
-﻿@using Portfolio.Marvin.Models.Experiences
+﻿@using Portfolio.Marvin.Models.Projects
 
-<div class="experience">
-   <h3>@Experience.JobTitle</h3>
+<div class="project">
+   <h3>@Project.Name</h3>
    <div class="detail">
-      <div class="company">
-         @Experience.CompanyName
+      <div class="link">
+         @Project.ProjectUrl
       </div>
       <div class="spacer"></div>
       <div class="date">
@@ -13,7 +13,7 @@
    </div>
    <div class="summary">
       <ul class="desc">
-         @foreach (var note in Experience.Descriptions)
+         @foreach (var note in Project.Descriptions)
          {
             <li>@note</li>
          }
@@ -24,11 +24,11 @@
 @code {
    
    [Parameter, EditorRequired]
-   public required Experience Experience { get; set; }
+   public required Project Project { get; set; }
    
    private string GetDatesString()
    {
-      return $"{GetDateString(Experience.StartedAt)} — {GetDateString(Experience.EndedAt)}";
+      return $"SINCE {GetDateString(Project.StartedAt)}";
    }
    
    private string GetDateString(DateTimeOffset date)

@@ -1,27 +1,27 @@
 ﻿
-.experience * {
+.project * {
     color: #000000;
 }
 
-.experience h3 {
+.project h3 {
     padding: 0 20px 5px 20px;
     font-weight: 500;
     font-size: 18px;
 }
 
-.experience .detail {
+.project .detail {
     display: flex;
     padding: 0 20px 5px 20px;
     font-size: 15px;
-    font-weight: 500; 
+    font-weight: 500;
     font-style: italic;
 }
 
-.experience .spacer {
+.project .spacer {
     flex: 1;
 }
 
-.experience .detail > div {
+.project .detail > div {
     color: rgba(0, 0, 0, 0.5);
 }
 

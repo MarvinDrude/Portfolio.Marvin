@@ -52,7 +52,8 @@ h4.job {
 }
 
 .technologies,
-.public-souce {
+.public-souce,
+.cv {
     font-size: 20px;
     font-weight: 400;
     color: var(--color-secondary);
@@ -62,6 +63,11 @@ h4.job {
 .me-wrapper {
     max-width: 400px;
     margin: 0 auto;
+}
+
+::deep .cv-link {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 1560px) {
